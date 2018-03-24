@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -11,15 +15,64 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using MiniFacebook.Models;
+using SendGrid;
 
 namespace MiniFacebook
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            await configSendGridasync(message);
+        }
+
+        private async Task configSendGridasync(IdentityMessage message)
+        {
+
+            var credentials = new NetworkCredential(
+                   ConfigurationManager.AppSettings["mailAccount"],
+                   ConfigurationManager.AppSettings["mailPassword"]
+               );
+
+            //var smtp = new SmtpClient("mail.protection.outlook.com", 25);
+
+            //smtp.UseDefaultCredentials = false;
+            //smtp.Credentials = credentials;
+            //smtp.EnableSsl = false;
+
+            //var to = new MailAddress(message.Destination);
+            //var from = new MailAddress("dblazic@tvz.hr", "Mini Facebook");
+
+            //var msg = new MailMessage();
+            //msg.To.Add(to);
+            //msg.From = from;
+            //msg.IsBodyHtml = true;
+            //msg.Subject = message.Subject;
+            //msg.Body = message.Body;
+
+            //await smtp.SendMailAsync(msg);
+
+            var myMessage = new SendGridMessage();
+            myMessage.AddTo(message.Destination);
+            myMessage.From = new System.Net.Mail.MailAddress("dblazic@tvz.hr", "MiniFacebook");
+            myMessage.Subject = message.Subject;
+            myMessage.Text = message.Body;
+            myMessage.Html = message.Body;
+
+
+            //Web transport for sending email.
+            var transportWeb = new Web(credentials);
+
+            //Sending email
+            if (transportWeb != null)
+            {
+                await transportWeb.DeliverAsync(myMessage);
+            }
+            else
+            {
+                Trace.TraceError("Failed to create web transport!");
+                await Task.FromResult(0);
+            }
         }
     }
 
