@@ -57,8 +57,15 @@ namespace MiniFacebook.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
+            if (!User.Identity.IsAuthenticated)
+            {
+                ViewBag.ReturnUrl = returnUrl;
+                return View();
+            } else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
 
         // POST: /Account/Login
@@ -162,7 +169,7 @@ namespace MiniFacebook.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser {
-                    UserName = model.FirstName + " " + model.LastName,
+                    UserName = model.Email,
                     Email = model.Email,
                     FirstName = model.FirstName,
                     LastName = model.LastName
@@ -171,7 +178,8 @@ namespace MiniFacebook.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    //By commenting out this line, the user will not be signed in by the registration. 
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -181,6 +189,10 @@ namespace MiniFacebook.Controllers
                     await UserManager.SendEmailAsync(user.Id, 
                         "Confirm your account", 
                         "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    //Uncomment to debug locally and test registration without sending email. 
+                    //TempData["ViewBagLink"] = call
+
 
                     ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
                          + "before you can log in.";
