@@ -218,6 +218,7 @@ namespace MiniFacebook.Controllers
 
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
+        [ChildActionOnly]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
             if (userId == null || code == null)
@@ -265,6 +266,7 @@ namespace MiniFacebook.Controllers
         //
         // GET: /Account/ForgotPasswordConfirmation
         [AllowAnonymous]
+        [ChildActionOnly]
         public ActionResult ForgotPasswordConfirmation()
         {
             return View();
@@ -307,6 +309,7 @@ namespace MiniFacebook.Controllers
         //
         // GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]
+        [ChildActionOnly]
         public ActionResult ResetPasswordConfirmation()
         {
             return View();
@@ -439,6 +442,7 @@ namespace MiniFacebook.Controllers
         //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
+        [ChildActionOnly]
         public ActionResult ExternalLoginFailure()
         {
             return View();

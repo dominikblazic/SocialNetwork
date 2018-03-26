@@ -24,7 +24,7 @@ namespace MiniFacebook
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/darkly.bootstrap.css",
                       "~/Content/site.css"));
         }
     }
