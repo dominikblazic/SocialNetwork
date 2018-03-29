@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
 namespace MiniFacebook.DataAccess.Infrastructure
 {
@@ -20,5 +21,7 @@ namespace MiniFacebook.DataAccess.Infrastructure
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Post> Posts { get; set; }
     }
 }

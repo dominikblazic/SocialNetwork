@@ -51,6 +51,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\ApplicationDbContext.cs" />
+    <Compile Include="Migrations\201803292031337_InitialCreate.cs" />
+    <Compile Include="Migrations\201803292031337_InitialCreate.Designer.cs">
+      <DependentUpon>201803292031337_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803292035047_AddedPost.cs" />
+    <Compile Include="Migrations\201803292035047_AddedPost.Designer.cs">
+      <DependentUpon>201803292035047_AddedPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +70,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201803292031337_InitialCreate.resx">
+      <DependentUpon>201803292031337_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803292035047_AddedPost.resx">
+      <DependentUpon>201803292035047_AddedPost.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
