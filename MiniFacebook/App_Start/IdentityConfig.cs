@@ -14,7 +14,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using MiniFacebook.Models;
+using MiniFacebook.DataAccess.Infrastructure;
+using MiniFacebook.Domena.Models;
 using SendGrid;
 
 namespace MiniFacebook

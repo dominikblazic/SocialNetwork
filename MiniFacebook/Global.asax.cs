@@ -1,4 +1,5 @@
-﻿using MiniFacebook.Models;
+﻿using MiniFacebook.DataAccess.Infrastructure;
+using MiniFacebook.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,7 +19,7 @@ namespace MiniFacebook
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
+            //Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<DataAccess.Infrastructure.ApplicationDbContext>());
         }
     }
 }

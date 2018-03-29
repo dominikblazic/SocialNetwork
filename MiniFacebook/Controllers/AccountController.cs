@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using MiniFacebook.Domena.Models;
 using MiniFacebook.Models;
 
 namespace MiniFacebook.Controllers
