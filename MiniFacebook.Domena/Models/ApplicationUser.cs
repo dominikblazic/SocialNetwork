@@ -18,6 +18,8 @@ namespace MiniFacebook.Domena.Models
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
+        public byte[] UserPhoto { get; set; }
         
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

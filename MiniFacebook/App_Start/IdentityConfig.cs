@@ -35,24 +35,6 @@ namespace MiniFacebook
                    ConfigurationManager.AppSettings["mailPassword"]
                );
 
-            //var smtp = new SmtpClient("mail.protection.outlook.com", 25);
-
-            //smtp.UseDefaultCredentials = false;
-            //smtp.Credentials = credentials;
-            //smtp.EnableSsl = false;
-
-            //var to = new MailAddress(message.Destination);
-            //var from = new MailAddress("dblazic@tvz.hr", "Mini Facebook");
-
-            //var msg = new MailMessage();
-            //msg.To.Add(to);
-            //msg.From = from;
-            //msg.IsBodyHtml = true;
-            //msg.Subject = message.Subject;
-            //msg.Body = message.Body;
-
-            //await smtp.SendMailAsync(msg);
-
             var myMessage = new SendGridMessage();
             myMessage.AddTo(message.Destination);
             myMessage.From = new System.Net.Mail.MailAddress("dblazic@tvz.hr", "MiniFacebook");
