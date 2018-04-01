@@ -1,17 +1,25 @@
-﻿@model MiniFacebook.Models.ProfileViewModel
+﻿@using Microsoft.AspNet.Identity
+@using MiniFacebook.Domena.Helpers
+@model MiniFacebook.Models.ProfileViewModel
 
 @{
     ViewBag.Title = "Profile page";
 }
 
-@if (Model.UserPhoto.Length == 0 && Model.UserPhoto == null)
+@if (!Url.Action("UserPhoto", "Profile").Any())
+
 {
     using (Html.BeginForm("UploadUserPhoto", "Profile", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
     {
         <div class="col-md-10">
             <input type="file" name="UserPhoto" id="fileUpload" accept=".png,.jpg,.jpeg,.gif" />
         </div>
+        <button type="submit" class="btn btn-default">Submit photo</button>
     }
 
+}
+else
+{
+    <img src="@Url.Action("UserPhoto", "Profile")" style="width:160px; height:160px;" />
 }
 

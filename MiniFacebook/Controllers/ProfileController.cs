@@ -8,7 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
-
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MiniFacebook.Controllers
 {
@@ -24,6 +24,8 @@ namespace MiniFacebook.Controllers
         [HttpPost]
         public ActionResult UploadUserPhoto()
         {
+            var context = new ApplicationDbContext();
+
             if (ModelState.IsValid)
             {
                 //to convert the uploaded photo to byte array before saving to db
@@ -46,15 +48,19 @@ namespace MiniFacebook.Controllers
 
             }
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
-        //public FileContentResult UserPhoto()
-        //{
-        //    if (User.Identity.IsAuthenticated)
-        //    {
-        //        string userId = User.Identity.GetUserId();
-        //    }
-        //}
+        public FileContentResult UserPhoto()
+        {
+           
+            string userId = User.Identity.GetUserId();
+
+            var context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+            var user = context.Users.Where(x => x.Id == userId).FirstOrDefault();
+
+            return new FileContentResult(user.UserPhoto, "image/jpeg");
+            
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace MiniFacebook.Domena.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [Display(Name = "User Photo")]
         public byte[] UserPhoto { get; set; }
         
 
@@ -30,6 +31,7 @@ namespace MiniFacebook.Domena.Models
             // Add custom user claims here
             userIdentity.AddClaim(new Claim("FirstName", FirstName));
             userIdentity.AddClaim(new Claim("LastName", LastName));
+           //userIdentity.AddClaim(new Claim("UserPhoto", System.Text.Encoding.Default.GetString(UserPhoto)));
 
             return userIdentity;
         }
