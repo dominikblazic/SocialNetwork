@@ -21,10 +21,12 @@ namespace MiniFacebook.Controllers
             return View();
         }
 
+
+        #region UserPhoto
         [HttpPost]
         public ActionResult UploadUserPhoto()
         {
-            var context = new ApplicationDbContext();
+            //var context = new ApplicationDbContext();
 
             if (ModelState.IsValid)
             {
@@ -40,10 +42,16 @@ namespace MiniFacebook.Controllers
                     }
                 }
 
-                ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                //Getting the current user and manager for the current user
+                var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
 
-                //Passing the byte array to user context to store in db
+                //Updating user
                 user.UserPhoto = imageData;
+
+                //Persisting the user changes in the db
+                manager.Update(user);
+                System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>().SaveChanges();
 
 
             }
@@ -51,6 +59,7 @@ namespace MiniFacebook.Controllers
             return RedirectToAction("Index");
         }
 
+        //Getting userphoto from db
         public FileContentResult UserPhoto()
         {
            
@@ -62,5 +71,7 @@ namespace MiniFacebook.Controllers
             return new FileContentResult(user.UserPhoto, "image/jpeg");
             
         }
+
+        #endregion
     }
 }

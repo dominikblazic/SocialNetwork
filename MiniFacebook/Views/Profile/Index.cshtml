@@ -6,7 +6,7 @@
     ViewBag.Title = "Profile page";
 }
 
-@if (!Url.Action("UserPhoto", "Profile").Any())
+@if (Url.Action("UserPhoto", "Profile").Count() == 0)
 
 {
     using (Html.BeginForm("UploadUserPhoto", "Profile", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
