@@ -6,20 +6,16 @@
     ViewBag.Title = "Profile page";
 }
 
-@if (Url.Action("UserPhoto", "Profile").Count() == 0)
+@Html.Partial("_ProfileHeader")
 
-{
-    using (Html.BeginForm("UploadUserPhoto", "Profile", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
-    {
-        <div class="col-md-10">
-            <input type="file" name="UserPhoto" id="fileUpload" accept=".png,.jpg,.jpeg,.gif" />
-        </div>
-        <button type="submit" class="btn btn-default">Submit photo</button>
+
+
+<style>
+    body {
+        padding-top: 65px;
     }
 
-}
-else
-{
-    <img src="@Url.Action("UserPhoto", "Profile")" style="width:160px; height:160px;" />
-}
-
+    [hidden] {
+        display: none !important;
+    }
+</style>

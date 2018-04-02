@@ -274,6 +274,7 @@
     <Content Include="Views\Account\Info.cshtml" />
     <Content Include="Views\Account\Error.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\_ProfileHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
