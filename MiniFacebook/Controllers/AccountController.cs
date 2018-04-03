@@ -220,7 +220,6 @@ namespace MiniFacebook.Controllers
 
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
-        [ChildActionOnly]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
             if (userId == null || code == null)
