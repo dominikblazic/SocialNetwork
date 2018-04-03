@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201803312003002_UpdateAppUser.Designer.cs">
       <DependentUpon>201803312003002_UpdateAppUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804031951442_NickAppUser.cs" />
+    <Compile Include="Migrations\201804031951442_NickAppUser.Designer.cs">
+      <DependentUpon>201804031951442_NickAppUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -84,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803312003002_UpdateAppUser.resx">
       <DependentUpon>201803312003002_UpdateAppUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804031951442_NickAppUser.resx">
+      <DependentUpon>201804031951442_NickAppUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -19,8 +20,15 @@ namespace MiniFacebook.Domena.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [Required]
+        [StringLength(450)]
+        [Display(Name = "UserName")]
+        [Index(IsUnique = true)]
+        public string Nickname { get; set; }
+
         [Display(Name = "User Photo")]
         public byte[] UserPhoto { get; set; }
+
         
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

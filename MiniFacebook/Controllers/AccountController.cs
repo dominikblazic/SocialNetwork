@@ -179,7 +179,8 @@ namespace MiniFacebook.Controllers
                     UserName = model.Email,
                     Email = model.Email,
                     FirstName = model.FirstName,
-                    LastName = model.LastName
+                    LastName = model.LastName,
+                    Nickname = model.Nickname
                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);

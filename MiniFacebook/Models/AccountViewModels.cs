@@ -87,6 +87,10 @@ namespace MiniFacebook.Models
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Username")]
+        public string Nickname { get; set; }
     }
 
     public class ResetPasswordViewModel
