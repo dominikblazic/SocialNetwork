@@ -255,7 +255,7 @@ namespace MiniFacebook.Controllers
         // POST: /Manage/ChangeName
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ChangeName(ChangeNameViewModel model)
+        public async Task<ActionResult> ChangeName(ChangeNameViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -271,6 +271,10 @@ namespace MiniFacebook.Controllers
 
                 manager.Update(user);
                 System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>().SaveChanges();
+
+                //Log out and log in user to refresh 
+                await SignInManager.SignInAsync(user, true, true);
+
                 return RedirectToAction("Index", new { Message = ManageMessageId.ChangeNameSuccess });
             }
         }
