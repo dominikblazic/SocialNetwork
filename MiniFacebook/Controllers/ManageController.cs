@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using MiniFacebook.DataAccess.Infrastructure;
 using MiniFacebook.Models;
 
 namespace MiniFacebook.Controllers
@@ -32,9 +33,9 @@ namespace MiniFacebook.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -56,6 +57,7 @@ namespace MiniFacebook.Controllers
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                : message == ManageMessageId.ChangeNameSuccess ? "Your name has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
                 : message == ManageMessageId.Error ? "An error has occurred."
@@ -213,14 +215,14 @@ namespace MiniFacebook.Controllers
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
 
-        //
+
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
             return View();
         }
 
-        //
+
         // POST: /Manage/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -242,6 +244,35 @@ namespace MiniFacebook.Controllers
             }
             AddErrors(result);
             return View(model);
+        }
+
+        // GET: /Manage/ChangeName
+        public ActionResult ChangeName()
+        {
+            return View();
+        }
+
+        // POST: /Manage/ChangeName
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeName(ChangeNameViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            else
+            {
+                var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+
+                manager.Update(user);
+                System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>().SaveChanges();
+                return RedirectToAction("Index", new { Message = ManageMessageId.ChangeNameSuccess });
+            }
         }
 
         //
@@ -377,6 +408,7 @@ namespace MiniFacebook.Controllers
         {
             AddPhoneSuccess,
             ChangePasswordSuccess,
+            ChangeNameSuccess,
             SetTwoFactorSuccess,
             SetPasswordSuccess,
             RemoveLoginSuccess,

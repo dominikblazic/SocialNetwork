@@ -58,6 +58,17 @@ namespace MiniFacebook.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class ChangeNameViewModel
+    {
+        [Required]
+        [Display(Name = "First name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last name")]
+        public string LastName { get; set; }
+    }
+
     public class AddPhoneNumberViewModel
     {
         [Required]
