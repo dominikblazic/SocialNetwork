@@ -39,7 +39,7 @@ namespace MiniFacebook.Domena.Models
             // Add custom user claims here
             userIdentity.AddClaim(new Claim("FirstName", FirstName));
             userIdentity.AddClaim(new Claim("LastName", LastName));
-           //userIdentity.AddClaim(new Claim("UserPhoto", System.Text.Encoding.Default.GetString(UserPhoto)));
+            userIdentity.AddClaim(new Claim("Nickname", Nickname));
 
             return userIdentity;
         }

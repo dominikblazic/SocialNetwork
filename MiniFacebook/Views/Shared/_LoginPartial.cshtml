@@ -8,7 +8,7 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink(User.Identity.GetFirstName() + " " + User.Identity.GetLastName(), "Index", "Profile", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink(User.Identity.GetFirstName() + " " + User.Identity.GetLastName(), "Index", "User", new { username = User.Identity.GetNickname() }, null)
         </li>
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>

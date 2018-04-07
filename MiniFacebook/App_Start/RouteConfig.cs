@@ -15,7 +15,7 @@ namespace MiniFacebook
 
             routes.MapRoute(
                 name: "Users",
-                url: "{controller}/{action}/{username}",
+                url: "User/Index/{username}",
                 defaults: new { controller = "User", action = "Index"}
                 );
 

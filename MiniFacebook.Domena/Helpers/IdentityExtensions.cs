@@ -43,20 +43,21 @@ namespace MiniFacebook.Domena.Helpers
 
         }
 
-        //public static string GetUserPhoto(this IIdentity identity)
-        //{
-        //    if (identity == null)
-        //    {
-        //        throw new ArgumentNullException("identity");
-        //    }
+        public static string GetNickname(this IIdentity identity)
+        {
+            if (identity == null)
+            {
+                throw new ArgumentNullException("identity");
+            }
 
-        //    var ci = identity as ClaimsIdentity;
-        //    if (ci != null)
-        //    {
-        //        return ci.FindFirstValue("UserPhoto");
-        //    }
-        //    return null;
+            var ci = identity as ClaimsIdentity;
+            if (ci != null)
+            {
+                return ci.FindFirstValue("Nickname");
+            }
+            return null;
 
-        //}
+        }
+
     }
 }

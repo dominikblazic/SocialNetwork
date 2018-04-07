@@ -1,9 +1,10 @@
 ﻿@using Microsoft.AspNet.Identity
 @using MiniFacebook.Domena.Helpers
 
-@if (Url.Action("UserPhoto", "Profile").Count() == 0)
+
+@if (Url.Action("UserPhoto", "User").Count() == 0)
 {
-    using (Html.BeginForm("UploadUserPhoto", "Profile", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+    using (Html.BeginForm("UploadUserPhoto", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
     {
         <h3>Please upload your photo to start creating your profile.</h3>
         <label class="btn btn-default">
@@ -18,10 +19,11 @@ else
 {
     <div class="row">
         <div class="col-sm-2">
-            <img src="@Url.Action("UserPhoto", "Profile")" style="width:200px; height:200px;" />
+            <img src="@Url.Action("UserPhoto", "User")" style="width:200px; height:200px;" />
         </div>
         <div class="col-sm-10">
             <h2>@User.Identity.GetFirstName() @User.Identity.GetLastName()</h2>
         </div>
     </div>
 }
+
