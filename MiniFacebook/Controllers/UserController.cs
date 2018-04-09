@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MiniFacebook.Domena.Helpers;
+using MiniFacebook.Models;
 
 namespace MiniFacebook.Controllers
 {
@@ -26,7 +27,14 @@ namespace MiniFacebook.Controllers
             }
             else
             {
-                return View(user);
+                var vm = new UserViewModel()
+                {
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Nickname = user.Nickname,
+                    UserPhoto = user.UserPhoto
+                };
+                return View(vm);
             }
         }
 
@@ -68,17 +76,22 @@ namespace MiniFacebook.Controllers
         }
 
         //Getting userphoto from db
-        public FileContentResult UserPhoto()
+        public FileContentResult UserPhoto(string username)
         {
 
-            string userId = User.Identity.GetUserId();
-            string nickname = User.Identity.GetNickname();
+            //string userId = User.Identity.GetUserId();
+            //string nickname = User.Identity.GetNickname();
 
             var context = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
-            var user = context.Users.Where(x => x.Nickname == nickname).FirstOrDefault();
-
-            return new FileContentResult(user.UserPhoto, "image/jpeg");
-
+            var user = context.Users.Where(x => x.Nickname == username).FirstOrDefault();
+            if (user.UserPhoto == null)
+            {
+                return null;
+            }
+            else
+            {
+                return new FileContentResult(user.UserPhoto, "image/jpeg");
+            }
         }
 
         #endregion

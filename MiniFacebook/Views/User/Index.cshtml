@@ -1,12 +1,12 @@
 ﻿@using Microsoft.AspNet.Identity
 @using MiniFacebook.Domena.Helpers
-@model MiniFacebook.Domena.Models.ApplicationUser
+@model MiniFacebook.Models.UserViewModel
 
 @{
     ViewBag.Title = "Profile page";
 }
 
-@*@Html.Partial("_ProfileHeader")*@
+@Html.Partial("_ProfileHeader", Model)
 
 <style>
     body {
@@ -19,8 +19,4 @@
 </style>
 
 
-<div>
-    <b>First Name: </b> @Model.FirstName <br />
-    <b>Last Name: </b> @Model.LastName <br />
-    <b>User Name: </b> @Model.Nickname <br />
-</div>
+
