@@ -11,5 +11,6 @@ namespace MiniFacebook.Models
         public string LastName { get; set; }
         public string Nickname { get; set; }
         public byte[] UserPhoto { get; set; }
+        public string DrzavaNaziv { get; set; }
     }
 }

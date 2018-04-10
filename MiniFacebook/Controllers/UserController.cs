@@ -32,7 +32,8 @@ namespace MiniFacebook.Controllers
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     Nickname = user.Nickname,
-                    UserPhoto = user.UserPhoto
+                    UserPhoto = user.UserPhoto,
+                    DrzavaNaziv = user.Drzava.Naziv
                 };
                 return View(vm);
             }

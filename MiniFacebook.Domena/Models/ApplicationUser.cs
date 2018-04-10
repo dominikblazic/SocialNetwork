@@ -29,6 +29,10 @@ namespace MiniFacebook.Domena.Models
         [Display(Name = "User Photo")]
         public byte[] UserPhoto { get; set; }
 
+        //Foreign Key
+        public string DrzavaId { get; set; }
+        public virtual Drzava Drzava { get; set; }
+
         
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
