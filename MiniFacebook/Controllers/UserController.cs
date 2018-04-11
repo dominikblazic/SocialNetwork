@@ -14,7 +14,7 @@ namespace MiniFacebook.Controllers
 {
     public class UserController : Controller
     {
-        ApplicationDbContext context = new ApplicationDbContext();
+        readonly ApplicationDbContext context = new ApplicationDbContext();
         
         // GET: User
         public ActionResult Index(string username)

@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using MiniFacebook.Domena.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace MiniFacebook.Models
 {
@@ -77,7 +80,7 @@ namespace MiniFacebook.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         [Required]
@@ -91,6 +94,12 @@ namespace MiniFacebook.Models
         [Required]
         [Display(Name = "Username")]
         public string Nickname { get; set; }
+
+        [Required]
+        [Display(Name = "Country")]
+        public string DrzavaId { get; set; }
+
+        public IQueryable<SelectListItem> Drzave { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -108,7 +117,7 @@ namespace MiniFacebook.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

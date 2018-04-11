@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using MiniFacebook.DataAccess.Infrastructure;
 using MiniFacebook.Domena.Models;
 using MiniFacebook.Models;
 
@@ -163,10 +165,24 @@ namespace MiniFacebook.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            ApplicationDbContext context = new ApplicationDbContext();
+
+            
+            var list = context.Drzave.Select(x => new SelectListItem
+            {
+                Value = x.Id,
+                Text = x.Naziv
+            });
+
+            var model = new RegisterViewModel()
+            {
+                Drzave = list
+            };
+
+            return View(model);
         }
 
-        //
+        
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
@@ -180,7 +196,8 @@ namespace MiniFacebook.Controllers
                     Email = model.Email,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    Nickname = model.Nickname
+                    Nickname = model.Nickname,
+                    DrzavaId = model.DrzavaId
                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);
