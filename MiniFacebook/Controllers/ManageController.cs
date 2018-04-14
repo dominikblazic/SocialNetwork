@@ -278,6 +278,29 @@ namespace MiniFacebook.Controllers
                 return RedirectToAction("Index", new { Message = ManageMessageId.ChangeNameSuccess });
             }
         }
+        // GET: /Manage/DeleteAccount
+        [ActionName("DeleteAccount")]
+        public ActionResult DeleteAccountGet()
+        {
+            return View();
+        }
+
+
+        // POST: /Manage/DeleteAccount
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("DeleteAccount")]
+        public ActionResult DeleteAccountPost()
+        {
+            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            manager.Delete(user);
+            System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>().SaveChanges();
+
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "Home");
+        }
 
         //
         // GET: /Manage/SetPassword
