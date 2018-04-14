@@ -1,0 +1,17 @@
+﻿@model IEnumerable<MiniFacebook.Domena.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Search"; 
+}
+
+<h2>Search result</h2>
+
+<div>
+    @foreach (var item in Model)
+    {
+    <div>
+        @Html.ActionLink(item.FirstName + " " + item.LastName, "Index", "User", new { username = item.Nickname }, null)
+    </div>
+    }
+
+</div>
