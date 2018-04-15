@@ -73,7 +73,7 @@ namespace MiniFacebook.Controllers
 
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         //Getting userphoto from db

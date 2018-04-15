@@ -20,6 +20,7 @@ namespace MiniFacebook.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        readonly ApplicationDbContext context = new ApplicationDbContext();
 
         public AccountController()
         {
@@ -165,9 +166,7 @@ namespace MiniFacebook.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ApplicationDbContext context = new ApplicationDbContext();
 
-            
             var list = context.Drzave.Select(x => new SelectListItem
             {
                 Value = x.Id,
@@ -229,9 +228,23 @@ namespace MiniFacebook.Controllers
                 }
                 AddErrors(result);
             }
+            
+                var list = context.Drzave.Select(x => new SelectListItem
+                {
+                    Value = x.Id,
+                    Text = x.Naziv
+                });
+
+                var modeldrzave = new RegisterViewModel()
+                {
+                    Drzave = list
+                };
+
 
             // If we got this far, something failed, redisplay form
+            model.Drzave = modeldrzave.Drzave;
             return View(model);
+
         }
 
 

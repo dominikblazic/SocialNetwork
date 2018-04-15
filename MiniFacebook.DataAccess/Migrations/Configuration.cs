@@ -20,13 +20,12 @@ namespace MiniFacebook.DataAccess.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
             context.Drzave.AddOrUpdate(x => x.Id,
-                new Drzava() { Id = "HR", Naziv = "Hrvatska"},
-                new Drzava() { Id = "GB", Naziv = "Velika Britanija"},
-                new Drzava() { Id = "RS", Naziv = "Republika Srbija"},
-                new Drzava() { Id = "SLO", Naziv = "Slovenija"},
-                new Drzava() { Id = "BiH", Naziv = "Bosna i Hercegovina"}
+                new Drzava() { Id = "HR", Naziv = "Hrvatska" },
+                new Drzava() { Id = "GB", Naziv = "Velika Britanija" },
+                new Drzava() { Id = "RS", Naziv = "Republika Srbija" },
+                new Drzava() { Id = "SLO", Naziv = "Slovenija" },
+                new Drzava() { Id = "BiH", Naziv = "Bosna i Hercegovina" }
                 );
-            
         }
     }
 }

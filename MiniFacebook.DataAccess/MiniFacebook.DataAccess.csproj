@@ -51,29 +51,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\ApplicationDbContext.cs" />
-    <Compile Include="Migrations\201803292031337_InitialCreate.cs" />
-    <Compile Include="Migrations\201803292031337_InitialCreate.Designer.cs">
-      <DependentUpon>201803292031337_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201804151855337_Init.cs" />
+    <Compile Include="Migrations\201804151855337_Init.Designer.cs">
+      <DependentUpon>201804151855337_Init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803292035047_AddedPost.cs" />
-    <Compile Include="Migrations\201803292035047_AddedPost.Designer.cs">
-      <DependentUpon>201803292035047_AddedPost.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803312003002_UpdateAppUser.cs" />
-    <Compile Include="Migrations\201803312003002_UpdateAppUser.Designer.cs">
-      <DependentUpon>201803312003002_UpdateAppUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804031951442_NickAppUser.cs" />
-    <Compile Include="Migrations\201804031951442_NickAppUser.Designer.cs">
-      <DependentUpon>201804031951442_NickAppUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804102144533_Drzave.cs" />
-    <Compile Include="Migrations\201804102144533_Drzave.Designer.cs">
-      <DependentUpon>201804102144533_Drzave.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804150857543_Comment.cs" />
-    <Compile Include="Migrations\201804150857543_Comment.Designer.cs">
-      <DependentUpon>201804150857543_Comment.cs</DependentUpon>
+    <Compile Include="Migrations\201804151858109_PostCaption.cs" />
+    <Compile Include="Migrations\201804151858109_PostCaption.Designer.cs">
+      <DependentUpon>201804151858109_PostCaption.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,23 +72,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803292031337_InitialCreate.resx">
-      <DependentUpon>201803292031337_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804151855337_Init.resx">
+      <DependentUpon>201804151855337_Init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803292035047_AddedPost.resx">
-      <DependentUpon>201803292035047_AddedPost.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803312003002_UpdateAppUser.resx">
-      <DependentUpon>201803312003002_UpdateAppUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804031951442_NickAppUser.resx">
-      <DependentUpon>201804031951442_NickAppUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804102144533_Drzave.resx">
-      <DependentUpon>201804102144533_Drzave.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804150857543_Comment.resx">
-      <DependentUpon>201804150857543_Comment.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804151858109_PostCaption.resx">
+      <DependentUpon>201804151858109_PostCaption.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

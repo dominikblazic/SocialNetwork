@@ -7,13 +7,13 @@ namespace MiniFacebook.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddedPost : IMigrationMetadata
+    public sealed partial class PostCaption : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedPost));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PostCaption));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803292035047_AddedPost"; }
+            get { return "201804151858109_PostCaption"; }
         }
         
         string IMigrationMetadata.Source
