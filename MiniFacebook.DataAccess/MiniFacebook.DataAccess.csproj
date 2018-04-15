@@ -71,6 +71,10 @@
     <Compile Include="Migrations\201804102144533_Drzave.Designer.cs">
       <DependentUpon>201804102144533_Drzave.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804150857543_Comment.cs" />
+    <Compile Include="Migrations\201804150857543_Comment.Designer.cs">
+      <DependentUpon>201804150857543_Comment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -98,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804102144533_Drzave.resx">
       <DependentUpon>201804102144533_Drzave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804150857543_Comment.resx">
+      <DependentUpon>201804150857543_Comment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -24,5 +24,6 @@ namespace MiniFacebook.DataAccess.Infrastructure
 
         public DbSet<Post> Posts { get; set; }
         public DbSet<Drzava> Drzave { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }

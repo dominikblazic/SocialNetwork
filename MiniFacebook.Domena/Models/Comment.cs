@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MiniFacebook.Domena.Models
 {
-    public class Post
+    public class Comment
     {
         public string Id { get; set; }
         public string Text { get; set; }
-        public DateTime PostTime { get; set; }
+        public DateTime CommentTime { get; set; }
     }
 }

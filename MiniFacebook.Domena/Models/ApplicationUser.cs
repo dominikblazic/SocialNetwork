@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
@@ -32,6 +33,9 @@ namespace MiniFacebook.Domena.Models
         //Foreign Key
         public string DrzavaId { get; set; }
         public virtual Drzava Drzava { get; set; }
+
+        public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
 
         
 
