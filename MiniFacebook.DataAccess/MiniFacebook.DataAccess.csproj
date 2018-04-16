@@ -59,6 +59,18 @@
     <Compile Include="Migrations\201804151858109_PostCaption.Designer.cs">
       <DependentUpon>201804151858109_PostCaption.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804162046517_like.cs" />
+    <Compile Include="Migrations\201804162046517_like.Designer.cs">
+      <DependentUpon>201804162046517_like.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804162147254_likes.cs" />
+    <Compile Include="Migrations\201804162147254_likes.Designer.cs">
+      <DependentUpon>201804162147254_likes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804162149284_idk.cs" />
+    <Compile Include="Migrations\201804162149284_idk.Designer.cs">
+      <DependentUpon>201804162149284_idk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -77,6 +89,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804151858109_PostCaption.resx">
       <DependentUpon>201804151858109_PostCaption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804162046517_like.resx">
+      <DependentUpon>201804162046517_like.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804162147254_likes.resx">
+      <DependentUpon>201804162147254_likes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804162149284_idk.resx">
+      <DependentUpon>201804162149284_idk.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
