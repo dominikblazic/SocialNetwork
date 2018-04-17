@@ -188,14 +188,16 @@ namespace MiniFacebook.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            var checkNick = context.Users.Where(u => u.Nickname == model.Nickname).FirstOrDefault();
+
+            if (ModelState.IsValid && checkNick == null)
             {
                 var user = new ApplicationUser {
                     UserName = model.Email,
                     Email = model.Email,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    Nickname = model.Nickname,
+                    Nickname = model.Nickname, //this is username
                     DrzavaId = model.DrzavaId
                 };
 
@@ -226,10 +228,20 @@ namespace MiniFacebook.Controllers
                     return View("Info");
                     //return RedirectToAction("Index", "Home");
                 }
+
+                
                 AddErrors(result);
             }
-            
-                var list = context.Drzave.Select(x => new SelectListItem
+
+            if (checkNick != null)
+            {
+                ModelState.AddModelError("", model.Nickname + " already exists, please pick another username.");
+
+            }
+
+
+            //repopulating dropdown
+            var list = context.Drzave.Select(x => new SelectListItem
                 {
                     Value = x.Id,
                     Text = x.Naziv
@@ -247,6 +259,7 @@ namespace MiniFacebook.Controllers
 
         }
 
+        
 
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]

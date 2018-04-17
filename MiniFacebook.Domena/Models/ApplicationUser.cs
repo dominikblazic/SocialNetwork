@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
+
 namespace MiniFacebook.Domena.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
@@ -24,7 +25,7 @@ namespace MiniFacebook.Domena.Models
         [Required]
         [StringLength(450)]
         [Display(Name = "UserName")]
-        [Index(IsUnique = true)]
+        [Index(IsUnique = true)]        
         public string Nickname { get; set; }
 
         [Display(Name = "User Photo")]
