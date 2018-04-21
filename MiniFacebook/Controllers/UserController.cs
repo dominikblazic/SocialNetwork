@@ -49,10 +49,10 @@ namespace MiniFacebook.Controllers
             {
                 //to convert the uploaded photo to byte array before saving to db
                 byte[] imageData = null;
-                if (Request.Files.Count > 0)
+                if (Request.Files.Count == 1)
                 {
                     HttpPostedFileBase poImgFile = Request.Files["UserPhoto"];
-
+                    
                     using (var binary = new BinaryReader(poImgFile.InputStream))
                     {
                         imageData = binary.ReadBytes(poImgFile.ContentLength);
@@ -69,7 +69,7 @@ namespace MiniFacebook.Controllers
                 //Persisting the user changes in the db
                 manager.Update(user);
                 System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>().SaveChanges();
-
+                
 
             }
 
