@@ -1,0 +1,29 @@
+﻿<div class="row">
+    <div class="col-sm-2">
+       <img src="@Url.Action("UserPhoto", "User", new { username = Model.Nickname }, null)" style="width:200px; height:200px;" data-toggle="modal" data-target="#myModal" />
+    </div>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Image settings</h4>
+            </div>
+
+            <div class="modal-body">
+                <p>Are you sure you want to remove the photo ?</p>
+            </div>
+            @using (Html.BeginForm("RemovePhoto", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+             {
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary pull-left">Yes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+             }
+        </div>
+
+    </div>
+</div>

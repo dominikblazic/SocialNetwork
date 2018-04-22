@@ -286,11 +286,14 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Error.cshtml" />
     <Content Include="Views\Manage\ChangeName.cshtml" />
-    <Content Include="Views\User\_ProfileHeader.cshtml" />
+    <Content Include="Views\User\_Header.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\NoUsersFound.cshtml" />
     <Content Include="Views\Manage\DeleteAccount.cshtml" />
     <Content Include="Views\Weather\Index.cshtml" />
+    <Content Include="Views\User\_ProfileImage.cshtml" />
+    <Content Include="Views\User\_ProfileAbout.cshtml" />
+    <Content Include="Views\User\_ProfileImageAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

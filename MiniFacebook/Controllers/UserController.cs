@@ -43,7 +43,9 @@ namespace MiniFacebook.Controllers
         [HttpPost]
         public ActionResult UploadUserPhoto()
         {
-            //var context = new ApplicationDbContext();
+            //Getting the current user and manager for the current user
+            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
 
             if (ModelState.IsValid)
             {
@@ -59,10 +61,6 @@ namespace MiniFacebook.Controllers
                     }
                 }
 
-                //Getting the current user and manager for the current user
-                var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                var user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-
                 //Updating user
                 user.UserPhoto = imageData;
 
@@ -73,7 +71,7 @@ namespace MiniFacebook.Controllers
 
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "User", new { username = user.Nickname });
         }
 
         //Getting userphoto from db
@@ -95,6 +93,17 @@ namespace MiniFacebook.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult RemovePhoto()
+        {
+            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            user.UserPhoto = null;
+            System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>().SaveChanges();
+
+            return RedirectToAction("Index", "User", new { username = user.Nickname});
+        }
         #endregion
     }
 }

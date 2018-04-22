@@ -1,0 +1,82 @@
+﻿@using Microsoft.AspNet.Identity
+@using MiniFacebook.Domena.Helpers
+@model MiniFacebook.Models.UserViewModel
+
+
+@if (User.Identity.GetNickname() == Model.Nickname)
+{
+
+    if (Model.UserPhoto == null)
+    {
+        using (Html.BeginForm("UploadUserPhoto", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+        {
+            <h3>Please upload your photo to start creating your profile.</h3>
+            <div>
+                <img id="uploaded" />
+            </div>
+            <label class="btn btn-default" id="after">
+                Browse<input type="file" name="UserPhoto" id="fileUpload" accept=".png,.jpg,.jpeg,.gif" onchange="readURL(this);" hidden />
+            </label>
+            <div>
+                <button type="submit" class="btn btn-success" id="gumb" >Submit</button>
+                <input class="btn btn-default" id="prekini" type="button" value="Cancel" onclick="location.href='@Url.Action("Index", "User", new { username = User.Identity.GetNickname() })'" />
+            </div>
+            @Html.Partial("_ProfileAbout")
+
+
+        }
+    }
+    else
+    {
+        @Html.Partial("_ProfileImageAdmin")
+        @Html.Partial("_ProfileAbout")
+
+    }
+}
+else
+{
+    if (Model.UserPhoto == null)
+    {
+
+        @Html.Partial("_ProfileAbout")
+
+    }
+    else
+    {
+        @Html.Partial("_ProfileImage")
+        @Html.Partial("_ProfileAbout")
+    }
+}
+
+
+
+<script>
+    //window.onload = function () {
+    //    document.getElementById("gumb").style.display = 'none';
+    //    document.getElementById("prekini").style.display = 'none';
+
+    //}
+    $(function () {
+        document.getElementById("gumb").style.display = 'none';
+        document.getElementById("prekini").style.display = 'none';
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#uploaded').attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+            document.getElementById("gumb").style.display = 'inline';
+            document.getElementById("prekini").style.display = 'inline';
+            document.getElementById("after").style.display = 'none';
+        }
+    }
+
+
+</script>
