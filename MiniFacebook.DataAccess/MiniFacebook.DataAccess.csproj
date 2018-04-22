@@ -75,6 +75,22 @@
     <Compile Include="Migrations\201804221255520_ChangedPostClass.Designer.cs">
       <DependentUpon>201804221255520_ChangedPostClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804221946418_ChangedPostClass1.cs" />
+    <Compile Include="Migrations\201804221946418_ChangedPostClass1.Designer.cs">
+      <DependentUpon>201804221946418_ChangedPostClass1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804222001165_ChangedPostClass2.cs" />
+    <Compile Include="Migrations\201804222001165_ChangedPostClass2.Designer.cs">
+      <DependentUpon>201804222001165_ChangedPostClass2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804222020172_ChangedPostClass3.cs" />
+    <Compile Include="Migrations\201804222020172_ChangedPostClass3.Designer.cs">
+      <DependentUpon>201804222020172_ChangedPostClass3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804222038499_ChangedPostClass4.cs" />
+    <Compile Include="Migrations\201804222038499_ChangedPostClass4.Designer.cs">
+      <DependentUpon>201804222038499_ChangedPostClass4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -105,6 +121,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804221255520_ChangedPostClass.resx">
       <DependentUpon>201804221255520_ChangedPostClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804221946418_ChangedPostClass1.resx">
+      <DependentUpon>201804221946418_ChangedPostClass1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804222001165_ChangedPostClass2.resx">
+      <DependentUpon>201804222001165_ChangedPostClass2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804222020172_ChangedPostClass3.resx">
+      <DependentUpon>201804222020172_ChangedPostClass3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804222038499_ChangedPostClass4.resx">
+      <DependentUpon>201804222038499_ChangedPostClass4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

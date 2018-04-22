@@ -34,8 +34,8 @@ namespace MiniFacebook.Controllers
                     LastName = user.LastName,
                     Nickname = user.Nickname,
                     UserPhoto = user.UserPhoto,
-                    DrzavaNaziv = user.Drzava.Naziv
-                    
+                    DrzavaNaziv = user.Drzava.Naziv,
+                    Posts = user.Posts.OrderByDescending(dt => dt.PostTime)
                 };
                 return View(vm);
             }
@@ -47,11 +47,13 @@ namespace MiniFacebook.Controllers
             var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
 
+            
+
             if (ModelState.IsValid)
             {
                 user.Posts.Add(new Post
                 {
-                    //Id = 
+                    //Id = user.Posts.Count + 1,
                     Text = model.Text,
                     PostTime = DateTime.Now
                 });

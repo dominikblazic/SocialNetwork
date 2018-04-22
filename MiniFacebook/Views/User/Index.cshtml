@@ -7,6 +7,16 @@
 }
 
 @Html.Partial("_Header", Model)
+<br/>
+<div>
+    @foreach(var item in Model.Posts)
+    {
+        <div class="panel panel-default">
+            <div class="panel-body">@item.Text</div>
+            <div class="panel-footer">@item.PostTime</div>
+        </div>
+    }
+</div>
 
 <style>
     body {
