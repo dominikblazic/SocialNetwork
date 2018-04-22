@@ -22,8 +22,6 @@
                 <input class="btn btn-default" id="prekini" type="button" value="Cancel" onclick="location.href='@Url.Action("Index", "User", new { username = User.Identity.GetNickname() })'" />
             </div>
             @Html.Partial("_ProfileAbout")
-
-
         }
     }
     else

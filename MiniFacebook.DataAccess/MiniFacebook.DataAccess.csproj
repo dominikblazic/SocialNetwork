@@ -71,6 +71,10 @@
     <Compile Include="Migrations\201804162149284_idk.Designer.cs">
       <DependentUpon>201804162149284_idk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804221255520_ChangedPostClass.cs" />
+    <Compile Include="Migrations\201804221255520_ChangedPostClass.Designer.cs">
+      <DependentUpon>201804221255520_ChangedPostClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -98,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804162149284_idk.resx">
       <DependentUpon>201804162149284_idk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804221255520_ChangedPostClass.resx">
+      <DependentUpon>201804221255520_ChangedPostClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

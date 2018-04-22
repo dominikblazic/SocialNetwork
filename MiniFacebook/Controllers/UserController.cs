@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using MiniFacebook.Domena.Helpers;
 using MiniFacebook.Models;
+using MiniFacebook.Domena.Models;
 
 namespace MiniFacebook.Controllers
 {
@@ -34,9 +35,33 @@ namespace MiniFacebook.Controllers
                     Nickname = user.Nickname,
                     UserPhoto = user.UserPhoto,
                     DrzavaNaziv = user.Drzava.Naziv
+                    
                 };
                 return View(vm);
             }
+        }
+
+        [HttpPost]
+        public ActionResult CreatePost(PostViewModel model)
+        {
+            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            if (ModelState.IsValid)
+            {
+                user.Posts.Add(new Post
+                {
+                    //Id = 
+                    Text = model.Text,
+                    PostTime = DateTime.Now
+                });
+
+                manager.Update(user);
+                System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>().SaveChanges();
+
+            }
+
+            return RedirectToAction("Index", "User", new { username = user.Nickname });
         }
 
         #region UserPhoto
