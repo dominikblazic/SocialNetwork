@@ -14,5 +14,6 @@ namespace MiniFacebook.Models
         public byte[] UserPhoto { get; set; }
         public string DrzavaNaziv { get; set; }
         public IEnumerable<Post> Posts { get; set; }
+        
     }
 }

@@ -17,11 +17,30 @@
         </div>
     }
 </div>
+@*<div id="tbody">
+
+    @{ Html.RenderAction("Fetch", new { startIndex = 0 });}
+
+</div>*@
+<script type="text/javascript">
+    var start = 5;
+    var url = '@Url.Action("Fetch", "User")';
+    var tbody = $('#tbody');
+    $(window).scroll(function () {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            
+            $.get(url, { startIndex: start }, function(response) {
+                tbody.append(response);
+                start += 5; // increment for next call
+            });
+        }
+    });
+</script>
 
 <style>
     body {
-        padding-top: 65px;
-    }
+            padding-top: 65px;
+        }
 
     [hidden] {
         display: none !important;

@@ -41,6 +41,8 @@ namespace MiniFacebook.Controllers
             }
         }
 
+        #region Posts
+
         [HttpPost]
         public ActionResult CreatePost(PostViewModel model)
         {
@@ -53,7 +55,6 @@ namespace MiniFacebook.Controllers
             {
                 user.Posts.Add(new Post
                 {
-                    //Id = user.Posts.Count + 1,
                     Text = model.Text,
                     PostTime = DateTime.Now
                 });
@@ -65,6 +66,18 @@ namespace MiniFacebook.Controllers
 
             return RedirectToAction("Index", "User", new { username = user.Nickname });
         }
+
+        public ActionResult Fetch(int startIndex)
+        {
+            var modelPost = context.Posts.OrderByDescending(dt => dt.PostTime).Skip(startIndex).Take(5);
+            var vm = new UserViewModel()
+            {
+                Posts = modelPost
+            };
+            return PartialView("_Posts", vm);
+        }
+
+        #endregion
 
         #region UserPhoto
         [HttpPost]
