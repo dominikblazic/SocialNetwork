@@ -67,9 +67,10 @@ namespace MiniFacebook.Controllers
             return RedirectToAction("Index", "User", new { username = user.Nickname });
         }
 
-        public ActionResult Fetch(int startIndex)
+        public ActionResult Fetch(int startIndex, string userName)
         {
-            var modelPost = context.Posts.OrderByDescending(dt => dt.PostTime).Skip(startIndex).Take(5);
+            var user = context.Users.Where(p => p.Nickname == userName).FirstOrDefault();
+            var modelPost = user.Posts.OrderByDescending(dt => dt.PostTime).Skip(startIndex).Take(5);
             var vm = new UserViewModel()
             {
                 Posts = modelPost
