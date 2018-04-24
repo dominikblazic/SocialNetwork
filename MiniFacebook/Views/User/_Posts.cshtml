@@ -1,9 +1,7 @@
 ﻿@model MiniFacebook.Models.UserViewModel
 
-<div>
-    @foreach (var item in Model)
-    {
-        foreach (var itemx in item.Posts)
+
+        @foreach (var itemx in Model.Posts)
         {
             <div class="panel panel-default">
                 <div class="panel-body">@itemx.Text</div>
@@ -11,5 +9,5 @@
             </div>
         }
 
-    }
-</div>
+    
+
