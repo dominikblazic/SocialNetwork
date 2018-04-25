@@ -21,13 +21,13 @@
                 <button type="submit" class="btn btn-success" id="gumb" >Submit</button>
                 <input class="btn btn-default" id="prekini" type="button" value="Cancel" onclick="location.href='@Url.Action("Index", "User", new { username = User.Identity.GetNickname() })'" />
             </div>
-            @Html.Partial("_ProfileAbout")
+            @Html.Partial("Header/_ProfileAbout")
         }
     }
     else
     {
-        @Html.Partial("_ProfileImageAdmin")
-        @Html.Partial("_ProfileAbout")
+        @Html.Partial("Header/_ProfileImageAdmin")
+        @Html.Partial("Header/_ProfileAbout")
 
     }
 }
@@ -36,13 +36,13 @@ else
     if (Model.UserPhoto == null)
     {
 
-        @Html.Partial("_ProfileAbout")
+        @Html.Partial("Header/_ProfileAbout")
 
     }
     else
     {
-        @Html.Partial("_ProfileImage")
-        @Html.Partial("_ProfileAbout")
+        @Html.Partial("Header/_ProfileImage")
+        @Html.Partial("Header/_ProfileAbout")
     }
 }
 
