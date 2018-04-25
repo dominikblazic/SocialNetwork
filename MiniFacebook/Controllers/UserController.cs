@@ -90,7 +90,8 @@ namespace MiniFacebook.Controllers
             var modelPost = user.Posts.OrderByDescending(dt => dt.PostTime).Skip(startIndex).Take(5);
             var vm = new UserViewModel()
             {
-                Posts = modelPost
+                Posts = modelPost,
+                Nickname = userName
             };
             return PartialView("_Posts", vm);
         }
