@@ -7,7 +7,7 @@ namespace MiniFacebook.Models
 {
     public class PostViewModel
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Caption { get; set; }
         public string Text { get; set; }
         public DateTime PostTime { get; set; }

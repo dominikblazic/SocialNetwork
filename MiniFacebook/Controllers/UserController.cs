@@ -67,6 +67,23 @@ namespace MiniFacebook.Controllers
             return RedirectToAction("Index", "User", new { username = user.Nickname });
         }
 
+        [HttpPost]
+        public ActionResult DeletePost(int id)
+        {
+            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            //var post = context.Posts.Where(d => d.Id == user.Posts.Select(j => j.Id).Single() && d.Text == user.Posts.Select(j => j.Text).Single()).Single();
+
+            var post = context.Posts.Find(id);
+
+            context.Posts.Remove(post);
+            //System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>().SaveChanges();
+            context.SaveChanges();
+            return RedirectToAction("Index", "User", new { username = user.Nickname });
+        }
+
+
         public ActionResult Fetch(int startIndex, string userName)
         {
             var user = context.Users.Where(p => p.Nickname == userName).FirstOrDefault();
