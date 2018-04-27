@@ -88,8 +88,11 @@ namespace MiniFacebook.Controllers
         {
             var user = context.Users.Where(p => p.Nickname == userName).FirstOrDefault();
             var modelPost = user.Posts.OrderByDescending(dt => dt.PostTime).Skip(startIndex).Take(5);
+
             var vm = new UserViewModel()
             {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
                 Posts = modelPost,
                 Nickname = userName
             };
