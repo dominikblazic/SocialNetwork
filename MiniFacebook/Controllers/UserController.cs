@@ -83,6 +83,34 @@ namespace MiniFacebook.Controllers
             return RedirectToAction("Index", "User", new { username = user.Nickname });
         }
 
+        [HttpPost]
+        public ActionResult LikePost(int id)
+        {
+            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            var post = context.Posts.Find(id);                
+
+            Like like = new Like();
+            like.IsLiked = true;
+            like.LikeTime = DateTime.Now;
+
+            user.Likes.Add(like);
+
+            
+
+            post.Likes.Add(like);
+            post.NrOfLikes++;
+
+
+            //manager.Update(user);
+            context.SaveChanges();
+            //System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>().SaveChanges();
+
+
+            return RedirectToAction("Index", "User", new { username = user.Nickname });
+        }
+
 
         public ActionResult Fetch(int startIndex, string userName)
         {

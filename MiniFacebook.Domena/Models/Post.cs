@@ -21,6 +21,7 @@ namespace MiniFacebook.Domena.Models
 
         public DateTime PostTime { get; set; }
         public virtual ICollection<Like> Likes { get; set; }
+        public int NrOfLikes { get; set; }
 
     }
 }
