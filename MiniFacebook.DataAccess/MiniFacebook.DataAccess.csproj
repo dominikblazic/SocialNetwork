@@ -91,6 +91,10 @@
     <Compile Include="Migrations\201804222038499_ChangedPostClass4.Designer.cs">
       <DependentUpon>201804222038499_ChangedPostClass4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805022143051_ChangedLike.cs" />
+    <Compile Include="Migrations\201805022143051_ChangedLike.Designer.cs">
+      <DependentUpon>201805022143051_ChangedLike.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -133,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804222038499_ChangedPostClass4.resx">
       <DependentUpon>201804222038499_ChangedPostClass4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805022143051_ChangedLike.resx">
+      <DependentUpon>201805022143051_ChangedLike.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
