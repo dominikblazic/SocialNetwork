@@ -22,6 +22,7 @@ namespace MiniFacebook.Controllers
         {
             var user = context.Users.Where(p => p.Nickname == username).FirstOrDefault();
 
+            
             if (user == null)
             {
                 return View("Error");
@@ -89,15 +90,14 @@ namespace MiniFacebook.Controllers
             var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
 
-            var post = context.Posts.Find(id);                
+            var post = context.Posts.Find(id);
 
             Like like = new Like();
-            like.IsLiked = true;
             like.LikeTime = DateTime.Now;
 
             user.Likes.Add(like);
 
-            
+
 
             post.Likes.Add(like);
             post.NrOfLikes++;

@@ -99,6 +99,22 @@
     <Compile Include="Migrations\201805022209400_Something.Designer.cs">
       <DependentUpon>201805022209400_Something.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805031516525_ChangedLike1.cs" />
+    <Compile Include="Migrations\201805031516525_ChangedLike1.Designer.cs">
+      <DependentUpon>201805031516525_ChangedLike1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805031526001_Something1.cs" />
+    <Compile Include="Migrations\201805031526001_Something1.Designer.cs">
+      <DependentUpon>201805031526001_Something1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805031527449_AddedLikeAgain.cs" />
+    <Compile Include="Migrations\201805031527449_AddedLikeAgain.Designer.cs">
+      <DependentUpon>201805031527449_AddedLikeAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805031530376_AddedLikeAgain2.cs" />
+    <Compile Include="Migrations\201805031530376_AddedLikeAgain2.Designer.cs">
+      <DependentUpon>201805031530376_AddedLikeAgain2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -147,6 +163,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805022209400_Something.resx">
       <DependentUpon>201805022209400_Something.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805031516525_ChangedLike1.resx">
+      <DependentUpon>201805031516525_ChangedLike1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805031526001_Something1.resx">
+      <DependentUpon>201805031526001_Something1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805031527449_AddedLikeAgain.resx">
+      <DependentUpon>201805031527449_AddedLikeAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805031530376_AddedLikeAgain2.resx">
+      <DependentUpon>201805031530376_AddedLikeAgain2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

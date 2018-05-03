@@ -14,7 +14,12 @@ namespace MiniFacebook.Domena.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public bool IsLiked { get; set; }
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+
+        public int PostId { get; set; }
+        public Post Post { get; set; }
+
         public DateTime LikeTime { get; set; }
     }
 }
