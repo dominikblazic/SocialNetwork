@@ -93,19 +93,14 @@ namespace MiniFacebook.Controllers
             var post = context.Posts.Find(id);
 
             Like like = new Like();
+            like.ApplicationUserId = user.Id;
+            like.PostId = post.Id;
             like.LikeTime = DateTime.Now;
-
-            user.Likes.Add(like);
-
-
-
-            post.Likes.Add(like);
+        
             post.NrOfLikes++;
 
-
-            //manager.Update(user);
+            context.Likes.Add(like);
             context.SaveChanges();
-            //System.Web.HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>().SaveChanges();
 
 
             return RedirectToAction("Index", "User", new { username = user.Nickname });
