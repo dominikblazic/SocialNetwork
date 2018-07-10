@@ -17,7 +17,7 @@ namespace MiniFacebook.Controllers
     {
         readonly ApplicationDbContext context = new ApplicationDbContext();
         
-        // GET: User
+        //TODO: route config
         public ActionResult Index(string username)
         {
             var user = context.Users.Where(p => p.Nickname == username).FirstOrDefault();
@@ -96,7 +96,7 @@ namespace MiniFacebook.Controllers
             like.ApplicationUserId = user.Id;
             like.PostId = post.Id;
             like.LikeTime = DateTime.Now;
-        
+            
             post.NrOfLikes++;
 
             context.Likes.Add(like);
