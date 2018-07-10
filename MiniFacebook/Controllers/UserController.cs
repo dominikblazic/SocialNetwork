@@ -92,6 +92,7 @@ namespace MiniFacebook.Controllers
 
             var post = context.Posts.Find(id);
 
+            //TODO: find out how to mark only liked post not all
             Like like = new Like();
             like.ApplicationUserId = user.Id;
             like.PostId = post.Id;

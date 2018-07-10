@@ -10,6 +10,7 @@
         <div class="panel panel-default">
             <div class="panel-body">@itemx.Text
                 <hr />
+            @* Ovdje dodati ako user moze lajkati post odnosno promjeni boju kad lajka *@
             @using (Html.BeginForm("LikePost", "User", new { id = itemx.Id}, FormMethod.Post, new { @class = "form-inline", role = "form", enctype = "multipart/form-data"}))
             {
             <button type="submit" class="btn btn-default pull-left" id="like" style="margin-right:5px"><span class="glyphicon glyphicon-thumbs-up"></span></button>
