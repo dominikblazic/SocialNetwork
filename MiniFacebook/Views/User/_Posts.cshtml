@@ -10,15 +10,16 @@
         <div class="panel panel-default">
             <div class="panel-body">@itemx.Text
                 <hr />
-            @* Ovdje dodati ako user moze lajkati post odnosno promjeni boju kad lajka *@
-            @*https://forums.asp.net/t/2027351.aspx?like+and+dislike+in+MVC+view*@
-
-            @using (Html.BeginForm("LikePost", "User", new { id = itemx.Id}, FormMethod.Post, new { @class = "form-inline", role = "form", enctype = "multipart/form-data"}))
+                     
+            @if (itemx.Likes.Any(x => x.ApplicationUserId == System.Web.HttpContext.Current.User.Identity.GetUserId() && x.PostId == itemx.Id))
             {
-            <button type="submit" class="btn btn-default pull-left" id="like" style="margin-right:5px"><span class="glyphicon glyphicon-thumbs-up"></span></button>
-            }
-            @*<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-down"></span></button>
-            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-comment"></span></button>*@
+                <a href="javascript:void(0)" class="unlike" data-id="@itemx.Id"><i class="glyphicon glyphicon-heart"></i></a>
+            } else
+            {
+                <a href="javascript:void(0)" class="like" data-id="@itemx.Id"><i class="glyphicon glyphicon-heart-empty" ></i></a>
+            } 
+                
+            
             </div>
             <div class="panel-footer clearfix">
                 @Model.FirstName @Model.LastName - @itemx.PostTime
@@ -35,8 +36,6 @@
     </div>
 </div>
 }
-
-
 
 
 <style>

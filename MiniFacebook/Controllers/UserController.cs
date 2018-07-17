@@ -107,6 +107,46 @@ namespace MiniFacebook.Controllers
             return RedirectToAction("Index", "User", new { username = user.Nickname });
         }
 
+        public string Like(int id)
+        {
+            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            var post = context.Posts.Find(id);
+            if(User.Identity.IsAuthenticated || Session["Username"] != null)
+            {
+                var username = user;
+                post.NrOfLikes++;
+                Like like = new Like();
+                like.PostId = id;
+                like.ApplicationUserId = username.Id;
+                like.LikeTime = DateTime.Now;
+
+                context.Likes.Add(like);
+                context.SaveChanges();
+            }
+
+            return post.Likes.ToString();
+        }
+
+        public string Unlike(int id)
+        {
+            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var post = context.Posts.Find(id);
+
+            if (User.Identity.IsAuthenticated || Session["Username"] != null)
+            {
+                var username = user;
+                Like like = context.Likes.FirstOrDefault(x => x.PostId == id && x.ApplicationUserId == username.Id);
+                post.NrOfLikes--;
+                context.Likes.Remove(like);
+                context.SaveChanges();
+            }
+
+            return post.Likes.ToString();
+        }
+
 
         public ActionResult Fetch(int startIndex, string userName)
         {
