@@ -11,14 +11,16 @@
             <div class="panel-body">
                 @itemx.Text
                 <hr />
-                     
+                   
+            
             @if (itemx.Likes.Any(x => x.ApplicationUserId == System.Web.HttpContext.Current.User.Identity.GetUserId() && x.PostId == itemx.Id))
             {
-                <a href="javascript:void(0)" class="unlike" data-id="@itemx.Id"><i class="glyphicon glyphicon-heart"></i></a>
+                <a href="javascript:void(0)" class="unlike" data-id="@itemx.Id" data-assigned="@itemx.NrOfLikes"><i class="glyphicon glyphicon-heart"></i></a>
             } else
             {
-                <a href="javascript:void(0)" class="like" data-id="@itemx.Id"><i class="glyphicon glyphicon-heart-empty" ></i></a>
+                <a href="javascript:void(0)" class="like" data-id="@itemx.Id" data-assigned="@itemx.NrOfLikes"><i class="glyphicon glyphicon-heart-empty" ></i></a>
             } 
+                @*<span class="pull-right">@itemx.NrOfLikes Likes</span>*@
                 
             
             </div>

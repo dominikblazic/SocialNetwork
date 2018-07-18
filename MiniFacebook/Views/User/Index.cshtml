@@ -17,6 +17,7 @@
 </div>
 
 <script type="text/javascript">
+
     var start = 5;
     var username = '@Url.RequestContext.RouteData.Values["username"]';
     var url = '@Url.Action("Fetch", "User")';
@@ -30,41 +31,43 @@
             });
         }
     });
-        //$document.ready(function () {
-        //LIKE
-        $(document).on("click", "a.like", function () {
-            var id = $(this).data("id");
-            var link = "/User/Like/" + id;
-            //Choose all a tags with this class and this ID
-            var a = $("a[class$='like'][data-id$='"+id+"']");
-            $.ajax({
-                type: "GET",
-                url: link,
-                success: function (result) {
-                    a.html('<i class="glyphicon glyphicon-heart"></i>').removeClass("like").addClass("unlike");
+        
+    //LIKE
+    $(document).on("click", "a.like", function () {
+        var id = $(this).data("id");
+        var nr = $(this).attr("data-assigned");
+        var link = "/User/Like/" + id;
 
-                }
-            });
+        //Choose all a tags with this class and this ID
+        var a = $("a[class$='like'][data-id$='"+id+"']");
+        $.ajax({
+            type: "GET",
+            url: link,
+            success: function (result) {
+                a.html('<i class="glyphicon glyphicon-heart"></i> ' + nr).removeClass("like").addClass("unlike");
+
+            }
         });
+    });
 
-        //UNLIKE
-        $(document).on("click", "a.unlike", function () {
-            var id = $(this).data("id");
-            var link = "/User/Unlike/" + id;
-            //Choose all a tags with this class and this ID
-            var a = $("a[class$='unlike'][data-id$='"+id+"']");
-            $.ajax({
-                type: "GET",
-                url: link,
-                success: function (result) {
-                    a.html('<i class="glyphicon glyphicon-heart-empty"></i>').removeClass("unlike").addClass("like");
+    //UNLIKE
+    $(document).on("click", "a.unlike", function () {
+        var id = $(this).data("id");
+        var nr = $(this).attr("data-assigned");
+        var link = "/User/Unlike/" + id;      
+        
+        //Choose all a tags with this class and this ID
+        var a = $("a[class$='unlike'][data-id$='"+id+"']");
+        $.ajax({
+            type: "GET",
+            url: link,
+            success: function (result) {
+                a.html('<i class="glyphicon glyphicon-heart-empty"></i> ' + nr).removeClass("unlike").addClass("like");
 
-                }
-            });
+            }
         });
+    });
 
-
-    //});
 </script>
 
 <style>
