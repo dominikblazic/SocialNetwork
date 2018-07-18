@@ -8,7 +8,8 @@
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-default">
-            <div class="panel-body">@itemx.Text
+            <div class="panel-body">
+                @itemx.Text
                 <hr />
                      
             @if (itemx.Likes.Any(x => x.ApplicationUserId == System.Web.HttpContext.Current.User.Identity.GetUserId() && x.PostId == itemx.Id))

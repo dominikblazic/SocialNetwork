@@ -84,29 +84,7 @@ namespace MiniFacebook.Controllers
             return RedirectToAction("Index", "User", new { username = user.Nickname });
         }
 
-        [HttpPost]
-        public ActionResult LikePost(int id)
-        {
-            var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var user = manager.FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-
-            var post = context.Posts.Find(id);
-
-            //TODO: find out how to mark only liked post not all
-            Like like = new Like();
-            like.ApplicationUserId = user.Id;
-            like.PostId = post.Id;
-            like.LikeTime = DateTime.Now;
-            
-            post.NrOfLikes++;
-
-            context.Likes.Add(like);
-            context.SaveChanges();
-
-
-            return RedirectToAction("Index", "User", new { username = user.Nickname });
-        }
-
+       
         public string Like(int id)
         {
             var manager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
