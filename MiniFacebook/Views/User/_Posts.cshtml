@@ -13,15 +13,15 @@
                 <hr />
                    
             
-            @if (itemx.Likes.Any(x => x.ApplicationUserId == System.Web.HttpContext.Current.User.Identity.GetUserId() && x.PostId == itemx.Id))
-            {
-                <a href="javascript:void(0)" class="unlike" data-id="@itemx.Id" data-assigned="@itemx.NrOfLikes"><i class="glyphicon glyphicon-heart"></i></a>
-            } else
-            {
-                <a href="javascript:void(0)" class="like" data-id="@itemx.Id" data-assigned="@itemx.NrOfLikes"><i class="glyphicon glyphicon-heart-empty" ></i></a>
-            } 
-                @*<span class="pull-right">@itemx.NrOfLikes Likes</span>*@
+                @if (itemx.Likes.Any(x => x.ApplicationUserId == System.Web.HttpContext.Current.User.Identity.GetUserId() && x.PostId == itemx.Id))
+                {
+                    <a href="javascript:void(0)" class="unlike" data-id="@itemx.Id" data-assigned="@itemx.NrOfLikes" style="text-decoration: none;"><font size="3"><i class="glyphicon glyphicon-heart"></i></font><b><font size="4"> Like</font></b></a>
                 
+                } else
+                {
+                    <a href="javascript:void(0)" class="like" data-id="@itemx.Id" data-assigned="@itemx.NrOfLikes" style="text-decoration: none;"><font size="3"><i class="glyphicon glyphicon-heart-empty"></i></font><font size="4"> Like</font></a>
+                
+                } 
             
             </div>
             <div class="panel-footer clearfix">

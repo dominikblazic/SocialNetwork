@@ -39,13 +39,14 @@
         var link = "/User/Like/" + id;
 
         //Choose all a tags with this class and this ID
-        var a = $("a[class$='like'][data-id$='"+id+"']");
+        var a = $("a[class$='like'][data-id$='" + id + "']");
+        
         $.ajax({
             type: "GET",
             url: link,
             success: function (result) {
-                a.html('<i class="glyphicon glyphicon-heart"></i> ' + nr).removeClass("like").addClass("unlike");
-
+                a.html('<font size="3"><i class="glyphicon glyphicon-heart"></i></font><b><font size="4"> Like</font></b>').removeClass("like").addClass("unlike");
+                
             }
         });
     });
@@ -57,12 +58,15 @@
         var link = "/User/Unlike/" + id;      
         
         //Choose all a tags with this class and this ID
-        var a = $("a[class$='unlike'][data-id$='"+id+"']");
+        var a = $("a[class$='unlike'][data-id$='" + id + "']");
+        
+
         $.ajax({
             type: "GET",
             url: link,
             success: function (result) {
-                a.html('<i class="glyphicon glyphicon-heart-empty"></i> ' + nr).removeClass("unlike").addClass("like");
+                a.html('<font size="3"><i class="glyphicon glyphicon-heart-empty"></i></font><font size="4"> Like</font>').removeClass("unlike").addClass("like");
+                
 
             }
         });
