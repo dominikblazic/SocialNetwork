@@ -55,6 +55,7 @@
     $(document).on("click", "a.unlike", function () {
         var id = $(this).data("id");
         var nr = $(this).attr("data-assigned");
+        
         var link = "/User/Unlike/" + id;      
         
         //Choose all a tags with this class and this ID
